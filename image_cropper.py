@@ -3,19 +3,14 @@ from PIL import Image
 from time import sleep
 from math import ceil
 from slugify import slugify
-import pytesseract
-from pytesseract import Output
+from pytesseract import Output, image_to_data
 import json
 import time
-import zipfile
-from difflib import SequenceMatcher
 from bs4 import BeautifulSoup
 from fake_headers import Headers
 from random import randint, choices
 from profanity_filter import ProfanityFilter
 import requests
-import string
-import cv2
 import os
 import re
 
@@ -48,7 +43,7 @@ def findBadWord(imagesFolder):
         cock = time.time()
         imgPath = os.path.join(imagesFolder, imgName)
         img = Image.open(imgPath)
-        d = pytesseract.image_to_data(img, output_type=Output.DICT)
+        d = image_to_data(img, output_type=Output.DICT)
 
         longitud = len(d["text"])
         censor_count = 0
