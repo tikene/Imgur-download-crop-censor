@@ -18,4 +18,4 @@ Installation:
 
 TODO: Make a requirements file
 
-Meanwhile you will need to install the modules manually, after you do it run "python -m spacy download en" in order to enable the english alphabet recognition for the profanity detection
+Meanwhile you will need to install the modules manually, after you do it run "python -m spacy download en" in order to enable the english alphabet recognition for the profanity detection. Install slugify by using "pip install python-slugify"
