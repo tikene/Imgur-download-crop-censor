@@ -15,7 +15,7 @@ You can press enter at any time to use the default settings, which can be change
 Imgur links use the following format: https://imgur.com/gallery/xxxxxxx
 
 Installation:
+
 TODO: Make a requirements file
-Meanwhile you will need to install the modules manually, after you do it run
-python -m spacy download en
-in order to enable the english alphabet recognition for the profanity censoring
+
+Meanwhile you will need to install the modules manually, after you do it run "python -m spacy download en" in order to enable the english alphabet recognition for the profanity detection
