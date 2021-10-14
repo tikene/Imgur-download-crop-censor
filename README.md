@@ -16,9 +16,6 @@ Imgur links use the following format: https://imgur.com/gallery/xxxxxxx
 
 
 Installation:
-
-TODO: Make a requirements file
-
 - Install the required modules: "pip install python-slugify"... 
 - Download language file for profanity detecton "python -m spacy download en"
 - Download Imagemagick (make sure it's in the system path) https://docs.wand-py.org/en/0.4.1/guide/install.html
