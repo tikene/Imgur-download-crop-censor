@@ -28,7 +28,7 @@ blue = Fore.BLUE + dim
 white = Fore.WHITE + dim
 magenta = Fore.MAGENTA + dim
 
-DEFAULT_LINK = "https://imgur.com/gallery/kr0Ip7x"
+DEFAULT_LINK = "https://imgur.com/gallery/dTv6b"
 CENSOR_IMG_FOLDER = "Censor Images"
 defaultMaxHeight = 700
 defaultWidthPercentage = 100
@@ -52,7 +52,7 @@ def findBadWord(imagesFolder):
             confidence_level = d["conf"][word]
             found_text = d["text"][word]
 
-            if int(confidence_level) <= 30:
+            if int(float(confidence_level)) <= 30:
                 # Si no está nada seguro de que sea una palabra
                 continue
             elif not found_text.isalpha() and not "'" in found_text:
@@ -142,6 +142,7 @@ def cropImages(folderPath, widthPercentage, maxHeight, censorImages):
 
         os.system("convert -background none -crop 100%x" + str(toPercentage) + "% +repage " + imgPath + " " + new_path)
 
+
         for img_file in os.listdir(new_folder):
             # Delete small images
             img_loc = os.path.join(new_folder, img_file)
@@ -203,10 +204,10 @@ def cropImages(folderPath, widthPercentage, maxHeight, censorImages):
         try:
             initial_width = initialDimensions[remove_ending]["width"]
             initial_height = initialDimensions[remove_ending]["height"]
-        except:
+        except Exception as e:
             # si la imagen no fue cropeada en partes
-            initial_width = initialDimensions[filename]["width"]
-            initial_height = initialDimensions[filename]["height"]
+            initial_width = initialDimensions[file]["width"]
+            initial_height = initialDimensions[file]["height"]
             remove_ending = file
 
         image = Image.open(processedFile)
@@ -267,7 +268,7 @@ def downloadAlbum(albumUrl, widthPercentage, maxHeight, censorImages):
             new_file_path = os.path.join(album_name, new_file)
 
             if os.path.exists(new_file_path):   # Para imagenes con mismo titulo
-                new_file = slugify(album_name + "-" + id) + file_extension
+                new_file = slugify(album_name + "-" + str(count)) + file_extension
                 new_file_path = os.path.join(album_name, new_file)
 
             with open(new_file_path, 'wb') as f:
@@ -275,7 +276,8 @@ def downloadAlbum(albumUrl, widthPercentage, maxHeight, censorImages):
                     f.write(chunk)
 
             print(green + "Downloaded " + white + bright + album_name)
-
+            count += 1
+            
         cropImages(album_name, widthPercentage, maxHeight, censorImages)
 
 
@@ -301,7 +303,7 @@ def main():
         maxHeight = defaultMaxHeight
     maxHeight = int(maxHeight)
 
-    censorImages = input("> Censor images? (y/n): ")
+    censorImages = input("> Censor images? (y/N): ")
     if censorImages == "y" or censorImages == "yes":
         censorImages = True
     else:
