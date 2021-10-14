@@ -20,3 +20,4 @@ Installation:
 - Install the required modules: "pip install python-slugify"... 
 - Download language file for profanity detecton "python -m spacy download en"
 - Download Imagemagick (make sure it's in the system path) https://docs.wand-py.org/en/0.4.1/guide/install.html
+- (Optional) If you wish to use profanity detection, download tesseract https://github.com/UB-Mannheim/tesseract/wiki and add the installation folder to your system path
