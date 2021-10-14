@@ -15,6 +15,7 @@ You can press enter at any time to use the default settings, which can be change
 Imgur links use the following format: https://imgur.com/gallery/xxxxxxx
 
 
+
 Installation:
 - Install the required modules: "pip install python-slugify"... 
 - Download language file for profanity detecton "python -m spacy download en"
